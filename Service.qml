@@ -128,6 +128,7 @@ Item {
             root.feed = parsed.feed
             root.stories = Model.dedupeStories(parsed.stories)
             root.fetchedAt = new Date(parsed.fetchedAt * 1000)
+            console.log("omarchy-hackernews: loaded", root.stories.length, "stories from feed", root.feed)
             root.refreshSucceeded()
             root.runPendingRefresh()
         }

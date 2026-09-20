@@ -52,10 +52,24 @@ BarWidget {
 
     onSettingsChanged: {
         root.maybeApplyTimers()
+        root.configureService()
         injectPanel()
     }
 
-    onServiceChanged: injectPanel()
+    Component.onCompleted: {
+        root.maybeApplyTimers()
+        root.configureService()
+    }
+
+    onServiceChanged: {
+        injectPanel()
+        root.configureService()
+    }
+
+    function configureService() {
+        if (root.service && typeof root.service.configure === "function")
+            root.service.configure(root.settings)
+    }
 
     function maybeApplyTimers() {
         tickerTimer.interval = Model.tickerMs(root.setting("tickerSeconds", 6))
@@ -117,8 +131,6 @@ BarWidget {
         : root.service !== null
     implicitWidth: pill.implicitWidth + Style.space(12)
     implicitHeight: Math.max(pill.implicitHeight + Style.space(6), root.barSize)
-
-    Component.onCompleted: root.maybeApplyTimers()
 
     Loader {
         id: panelLoader
