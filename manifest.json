@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.iampoul.hackernews",
+  "name": "Hacker News",
+  "version": "1.0.0",
+  "author": "iampoul",
+  "license": "MIT",
+  "description": "Hacker News top/best/new headlines in the bar with a story popup.",
+  "kinds": ["service", "bar-widget"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Hacker News",
+    "description": "Cycling HN headlines with a top/best/new story popup",
+    "category": "Info",
+    "allowMultiple": false,
+    "defaultSection": "center",
+    "defaults": {
+      "feed": "top",
+      "refreshMinutes": 5,
+      "tickerSeconds": 6,
+      "storyCount": 30
+    },
+    "schema": []
+  }
+}
