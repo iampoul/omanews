@@ -26,6 +26,8 @@ Item {
     readonly property int refreshIntervalMs: Math.max(60, parseInt(root.setting("refreshMinutes", 5), 10) || 5) * 60 * 1000
     readonly property int storyCount: Math.max(1, Math.min(100, parseInt(root.setting("storyCount", 30), 10) || 30))
 
+    property bool configuredOnce: false
+
     function setting(key, fallback) {
         var value = settings && settings[key]
         return value === undefined || value === null ? fallback : value
@@ -35,6 +37,8 @@ Item {
         settings = nextSettings || ({})
         refreshTimer.interval = refreshIntervalMs
         refreshTimer.restart()
+        if (configuredOnce) return
+        configuredOnce = true
         if (loading) {
             refreshPending = true
             return
