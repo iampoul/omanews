@@ -44,19 +44,25 @@ Item {
 
     function setFeed(next) {
         var resolved = Model.sanitizeFeed(next)
-        if (resolved === root.feed && hasStories) return
+        if (resolved === root.feed) return
         root.feed = resolved
-        if (hasStories) return
+        root.stories = []
+        root.error = ""
+        root.requestGeneration += 1
+        if (loading) {
+            refreshPending = true
+            return
+        }
         refresh(true)
     }
 
-    function refresh(manual) {
+    function refresh(force) {
         if (loading) {
             refreshPending = true
             refreshTimer.restart()
             return
         }
-        if (manual && hasStories && Date.now() < fetchedAt.getTime() + refreshIntervalMs) return
+        if (!force && hasStories && Date.now() < fetchedAt.getTime() + refreshIntervalMs) return
         loading = true
         error = ""
         requestGeneration += 1
