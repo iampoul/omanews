@@ -184,7 +184,7 @@ BarWidget {
             color: root.bar ? (root.service && root.service.stories.length === 0 ? Qt.darker(root.bar.foreground, 1.4) : root.bar.foreground) : "white"
             font.family: root.bar ? root.bar.fontFamily : "monospace"
             font.pixelSize: Style.font.bodySmall
-            opacity: 0
+            opacity: 1
         }
 
         Text {
