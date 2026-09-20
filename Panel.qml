@@ -127,28 +127,15 @@ Panel {
 
                     Button {
                         anchors.right: parent.right
-                        anchors.rightMargin: Style.space(10)
+                        anchors.rightMargin: Style.space(4)
                         anchors.verticalCenter: parent.verticalCenter
-                        implicitWidth: Style.space(28)
-                        implicitHeight: Style.space(28)
-                        enabled: root.service !== null && !(root.service && root.service.loading)
                         text: "\uf01b"
+                        tooltipText: "Refresh"
+                        foreground: root.bar ? Qt.darker(root.bar.foreground, 1.2) : "#a6adc8"
+                        fontSize: Style.font.bodySmall
+                        accent: "#ff6600"
 
                         onClicked: root.refresh()
-
-                        contentItem: Text {
-                            text: parent.text
-                            color: root.bar ? root.bar.foreground : "white"
-                            font.family: root.bar ? root.bar.fontFamily : "monospace"
-                            font.pixelSize: Style.font.bodySmall
-                            verticalAlignment: Text.AlignVCenter
-                            horizontalAlignment: Text.AlignHCenter
-                        }
-
-                        background: Rectangle {
-                            radius: Style.space(6)
-                            color: parent.hovered ? Qt.rgba(1, 1, 1, 0.06) : "transparent"
-                        }
                     }
                 }
 
