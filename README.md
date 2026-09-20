@@ -30,6 +30,22 @@ Or clone into this repo and add the local path:
 omarchy plugin add file:///home/iampoul/Work/omanews --enable
 ```
 
+## Remove
+
+```bash
+omarchy plugin remove io.github.iampoul.hackernews
+omarchy restart shell
+```
+
+This removes the plugin; your `shell.json` bar layout is left untouched.
+
+## Requirements
+
+- `curl` and `jq` on `PATH` — the plugin fetches the HN API via external
+  processes (`fetch-feed.sh`, `curl` + `jq`), so no in-process networking is
+  used. Everything else is [Quickshell](https://quickshell.io/) in-tree QML.
+- Uses the official [HN API](https://github.com/HackerNews/API). No API key.
+
 ## Usage
 
 | Input | Action |
