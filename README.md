@@ -6,6 +6,10 @@ puts Hacker News in the bar: a rotating headline pill with a story popup.
 Built on the official [HN API](https://github.com/HackerNews/API) — no key, no
 rate limit, fetched live with `curl`.
 
+## Preview
+
+![Bar pill + story popup on Top feed](preview.png)
+
 ## Features
 
 - **Bar pill** — `HN <feed> <headline> ▲score`, titles cycle every few seconds.
