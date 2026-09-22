@@ -161,6 +161,7 @@ BarWidget {
             id: feedText
             anchors.verticalCenter: parent.verticalCenter
             text: root.service ? root.service.feedLabel : "HN"
+            textFormat: Text.PlainText
             color: root.bar ? Qt.darker(root.bar.foreground, 1.3) : "#a6adc8"
             font.family: root.bar ? root.bar.fontFamily : "monospace"
             font.pixelSize: Style.font.caption
@@ -174,6 +175,7 @@ BarWidget {
             clip: true
             maximumLineCount: 1
             elide: Text.ElideRight
+            textFormat: Text.PlainText
             text: {
                 var story = root.currentStory()
                 if (story) return story.title
@@ -190,6 +192,7 @@ BarWidget {
         Text {
             id: scoreText
             anchors.verticalCenter: parent.verticalCenter
+            textFormat: Text.PlainText
             text: {
                 var story = root.currentStory()
                 return story && story.score > 0 ? "▲ " + story.score : ""

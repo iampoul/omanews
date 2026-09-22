@@ -48,6 +48,8 @@ This removes the plugin; your `shell.json` bar layout is left untouched.
 - `curl` and `jq` on `PATH` — the plugin fetches the HN API via external
   processes (`fetch-feed.sh`, `curl` + `jq`), so no in-process networking is
   used. Everything else is [Quickshell](https://quickshell.io/) in-tree QML.
+- Every response is received under a hard byte ceiling (per-response and
+  aggregate); an oversized response fails closed instead of loading partially.
 - Uses the official [HN API](https://github.com/HackerNews/API). No API key.
 
 ## Usage

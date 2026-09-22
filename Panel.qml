@@ -174,6 +174,7 @@ Panel {
                         visible: (root.service === null) || (root.service && !root.service.hasStories)
 
                         Text {
+                            textFormat: Text.PlainText
                             text: {
                                 if (!root.service) return "Service unavailable"
                                 if (root.service.loading) return "Loading Hacker News…"
@@ -251,6 +252,7 @@ Panel {
                 maximumLineCount: 2
                 elide: Text.ElideRight
                 wrapMode: Text.Wrap
+                textFormat: Text.PlainText
                 text: row.story && row.story.title ? row.story.title : ""
                 color: root.bar ? root.bar.foreground : "white"
                 font.family: root.bar ? root.bar.fontFamily : "monospace"
@@ -259,6 +261,7 @@ Panel {
 
             Text {
                 width: parent.width
+                textFormat: Text.PlainText
                 text: {
                     var s = row.story
                     if (!s) return ""
